@@ -1,0 +1,4 @@
+media
+media/cropped_images/
+media/cropped_images/*
+*.jpg
