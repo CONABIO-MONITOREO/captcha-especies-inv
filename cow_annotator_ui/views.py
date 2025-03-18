@@ -70,6 +70,7 @@ def images(request, page):
     images_res = {'images': []}
     url = url_base_solr + 'sipecam/select?wt=json&rows=20&start={0}&q=new_deliveries:true%20AND%20fecha_foto:[{1} TO *]&fq={{!join%20from=ftrampa_id%20to=id%20fromIndex=anotaciones}}modelo_id:megadetector_v5a%20AND%20probabilidad_modelo:[40%20TO%20100]%20AND%20etiqueta:animal%20AND%20coleccion:sipecam&sort=labeled%20asc,%20fecha_foto%20asc'.format(20*page, last_fecha_foto)
     res = requests.get(url, headers={'content-type': 'application/json'}).json()
+    print(res)
     for img in res['response']['docs']:
         ## Getting annotations
         url = url_base_solr + 'anotaciones/select?wt=json&q=ftrampa_id:{0}%20AND%20coleccion:%22sipecam%22%20'.format(img['id'])
@@ -106,9 +107,9 @@ def images(request, page):
                         annotation_record.ftrampa_id = img['id']
                         annotation_record.annotation_id = ann['id']
                         annotation_record.p1_x = p1_x
-                        annotation_record.p1_x = p1_y
-                        annotation_record.p1_x = p2_x
-                        annotation_record.p1_x = p2_y
+                        annotation_record.p1_y = p1_y
+                        annotation_record.p2_x = p2_x
+                        annotation_record.p2_y = p2_y
                         ## Saving cropped images
                         cropped_image = photo_image.crop(bbox)
                         buffer = BytesIO()

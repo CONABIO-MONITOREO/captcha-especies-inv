@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Photo(models.Model):
-    ftrampa_id = models.IntegerField(db_index=True)
+    ftrampa_id = models.CharField(max_length=200, null=False, blank=True, db_index=True)
     ruta = models.TextField(null=False, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     checked = models.BooleanField(default=False)
@@ -12,7 +12,7 @@ class Photo(models.Model):
         return self.annotation_id
 
 class Annotation(models.Model):
-    ftrampa_id = models.IntegerField(db_index=True)
+    ftrampa_id = models.CharField(max_length=200, null=False, blank=True, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
     annotation_id = models.CharField(max_length=50, null=False, blank=True, db_index=True)
     p1_x = models.IntegerField(null=True)
