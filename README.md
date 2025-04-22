@@ -13,6 +13,16 @@ Lo que se ha desarrollado hasta el momento son las siguientes características
 3. Las anotaciones se guardan en el core de Solr del cliente de anotación con colección SIPECAM.
 4. Es posible parametrizar la especie de la que se va a etiquetar, el modelo `ParametrizedSpecies` es quién guarda y obtiene la especie.
 
+## Base de datos
+
+Se debe incluir un archivo `.env` en el que se especifiquen las credenciales de la base de datos
+
+- DBHOST
+- DBNAME
+- DBPORT
+- DBUSER
+- DBPASS
+
 ## Dependencias 
 
 La aplicación está desarrollada principalmente con dos herramientas
@@ -48,7 +58,7 @@ Para correr en modo desarrollo hay que corrrer el siguiente comando
 ## ToDo
 
 Agregar a las variables de ambiente las URLs externas
+- url_base_solr
+- url_base_img
+- url_user_management
 
-url_base_solr
-url_base_img
-url_user_management
